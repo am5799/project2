@@ -11,7 +11,6 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    customer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
 
