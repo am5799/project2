@@ -9,12 +9,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['name', 'price']
 
 
-class CustomerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Customer
-        fields = ['firstname', 'lastname']
-
-
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
