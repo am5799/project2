@@ -19,3 +19,9 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['product', 'reviewer', 'rating', 'review']
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['id', 'email']

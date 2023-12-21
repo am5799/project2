@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAuthenticated
+
 from .models import Product, Review, Order
-from .serializers import ProductSerializer, ReviewSerializer, OrderSerializer
+from .serializers import ProductSerializer, ReviewSerializer, OrderSerializer, CustomerSerializer
 
 
 class ProductViewSets(viewsets.ModelViewSet):
@@ -11,8 +12,9 @@ class ProductViewSets(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-class CustomerViewSets(viewsets.ModelViewSet):
+class CustomerViewSets(mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = get_user_model().objects.all()
+    serializer_class = CustomerSerializer
     permission_classes = [IsAuthenticated]
 
 
